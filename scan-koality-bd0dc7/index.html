@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Koality Deals · AI Scan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A1022; --card:#0E1A33; --elev:#141C33; --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
+  --t-strong:#FFFFFF; --t-body:#EAF0FB; --t2:#A7B2C6; --t3:#6B7689;
+  --eyebrow:#7FE0B0; --lime:#BDEA44; --green:#57D295; --cyan:#13CBC2; --cyan2:#3FDCD4;
+  --grad:linear-gradient(100deg,#BDEA44 0%,#57D295 52%,#13CBC2 100%);
+  --pos:rgba(189,234,68,.14); --info:rgba(63,220,212,.14); --neu:rgba(255,255,255,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{
+  color:var(--t-body);font:400 16.5px/1.7 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(38% 30% at 82% 6%, rgba(87,210,149,.16), transparent 70%),
+    radial-gradient(34% 28% at 8% 2%, rgba(96,64,190,.20), transparent 70%),
+    radial-gradient(30% 24% at 96% 30%, rgba(19,203,194,.10), transparent 70%),
+    radial-gradient(40% 30% at 0% 55%, rgba(40,90,200,.12), transparent 70%),
+    radial-gradient(36% 26% at 100% 80%, rgba(120,70,200,.12), transparent 70%),
+    radial-gradient(125% 115% at 28% 0%,#0E1A33 0%,#0A1022 54%,#120C24 100%);
+  background-color:var(--bg);
+}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.35;
+  background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.2px);background-size:22px 22px;
+  -webkit-mask-image:linear-gradient(180deg,#000 0,transparent 70%);mask-image:linear-gradient(180deg,#000 0,transparent 70%)}
+.wrap{max-width:880px;margin:0 auto;padding:0 28px;position:relative}
+h1,h2,h3,h4{font-family:"Chakra Petch",sans-serif;color:var(--t-strong);font-weight:600;letter-spacing:.005em}
+.hl{display:block;width:fit-content;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+a{color:var(--cyan2)}
+.eyebrow{font:600 12px/1 "Chakra Petch";letter-spacing:.2em;text-transform:uppercase;color:var(--eyebrow)}
+
+/* cabecera */
+.top{display:flex;justify-content:space-between;align-items:center;padding:30px 0 0}
+.top svg{height:24px;width:auto;display:block}
+.pill{font:700 11px/1 Manrope;letter-spacing:.06em;padding:7px 11px;border-radius:99px;background:var(--neu);color:var(--t2)}
+
+/* portada */
+.cover{padding:96px 0 72px}
+.cover h1{font-size:clamp(44px,8vw,80px);line-height:.98;font-weight:700;margin-top:20px}
+.cover .sub{margin-top:24px;font-size:19px;color:var(--t2);max-width:620px}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.meta span{font:600 12px/1 Manrope;padding:9px 13px;border-radius:99px;border:1px solid var(--line2);color:var(--t-body)}
+
+/* marco de app */
+.frame{margin-top:56px;position:relative;background:var(--card);border:1px solid var(--line2);border-radius:16px;
+  box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 6px rgba(189,234,68,.06)}
+.frame::before{content:"";position:absolute;inset:-60px -40px auto auto;width:360px;height:260px;z-index:-1;
+  background:radial-gradient(closest-side,rgba(87,210,149,.18),transparent)}
+.frame .bar{display:flex;align-items:center;gap:8px;padding:13px 16px;border-bottom:1px solid var(--line)}
+.frame .bar i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.14)}
+.frame .bar b{margin-left:10px;font:600 12px Manrope;color:var(--t2)}
+.frame .bar em{margin-left:auto;font:700 11px Manrope;font-style:normal;padding:5px 9px;border-radius:99px;background:var(--pos);color:var(--lime)}
+.frame .body{display:grid;grid-template-columns:repeat(4,1fr)}
+.frame .k{padding:22px 20px;border-right:1px solid var(--line)}
+.frame .k:last-child{border-right:0}
+.frame .v{font:600 32px/1.05 "Chakra Petch";color:#fff}
+.frame .v.g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.frame .l{font-size:12.5px;color:var(--t2);margin-top:8px;line-height:1.45}
+.frame-cap{font-size:12px;color:var(--t3);margin-top:12px}
+
+/* índice */
+.toc{display:grid;grid-template-columns:repeat(3,1fr);gap:0 28px;list-style:none;counter-reset:t;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.toc li{counter-increment:t}
+.toc a{display:flex;gap:12px;align-items:baseline;padding:7px 0;color:var(--t2);text-decoration:none;font-size:14.5px}
+.toc a::before{content:counter(t,decimal-leading-zero);font:600 12px "Chakra Petch";color:var(--eyebrow)}
+.toc a:hover{color:#fff}
+
+/* secciones */
+section{padding:76px 0 12px;border-bottom:1px solid var(--line);scroll-margin-top:12px}
+section:last-of-type{border-bottom:0}
+h2{font-size:clamp(30px,4.6vw,42px);line-height:1.08;margin:16px 0 22px}
+h3{font-size:19px;margin:40px 0 12px}
+p{margin:0 0 14px;color:var(--t2)}
+p.lead{font-size:19px;line-height:1.6;color:var(--t-body)}
+b,strong{color:var(--t-body);font-weight:600}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+.card.light{border-radius:20px;position:relative;overflow:hidden}
+.card.light::before{content:"";position:absolute;top:-80px;right:-80px;width:240px;height:240px;background:radial-gradient(closest-side,rgba(87,210,149,.13),transparent)}
+.tag{display:inline-block;font:700 11px/1 Manrope;letter-spacing:.04em;padding:6px 10px;border-radius:99px}
+.tag.pos{background:var(--pos);color:var(--lime)} .tag.info{background:var(--info);color:var(--cyan2)} .tag.neu{background:var(--neu);color:var(--t2)}
+
+ul.b{list-style:none;margin:10px 0 0}
+ul.b li{position:relative;padding:8px 0 8px 22px;color:var(--t2);font-size:15.5px;border-top:1px solid var(--line)}
+ul.b li:first-child{border-top:0}
+ul.b li::before{content:"";position:absolute;left:1px;top:17px;width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px rgba(189,234,68,.5)}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0 8px}
+.two .card h4{font-size:17px;margin:14px 0 6px}
+
+/* barras */
+.chart{margin:28px 0 8px}
+.chart .cap{display:flex;justify-content:space-between;margin-bottom:16px}
+.chart .cap span{font-size:12px;color:var(--t3)}
+.hbar{display:grid;grid-template-columns:200px 1fr 86px;align-items:center;gap:16px;padding:10px 0;font-size:13.5px;color:var(--t2)}
+.hbar .track{height:10px;border-radius:5px;background:rgba(255,255,255,.06)}
+.hbar .fill{height:100%;border-radius:5px}
+.hbar .fill.g{background:var(--grad);box-shadow:0 0 18px rgba(87,210,149,.45)}
+.hbar .val{font:600 16px "Chakra Petch";color:#fff;text-align:right}
+
+/* tabla */
+.tablewrap{overflow-x:auto;margin:20px 0 8px;background:var(--card);border:1px solid var(--line);border-radius:16px}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th{font:600 11px/1 "Chakra Petch";letter-spacing:.16em;text-transform:uppercase;color:var(--t3);text-align:left;padding:15px 16px;border-bottom:1px solid var(--line)}
+td{padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--t2)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--t-body);font-weight:600}
+td.n{font:600 15px "Chakra Petch";color:#fff;white-space:nowrap}
+.note{font-size:12.5px;color:var(--t3)}
+
+/* diagrama de fases */
+.phases{margin:34px 0 12px;position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;text-align:center}
+.phases::before{content:"";position:absolute;left:10%;right:10%;top:27px;border-top:1.6px dashed rgba(255,255,255,.22)}
+.ph{position:relative}
+.node{width:54px;height:54px;margin:0 auto;border-radius:50%;display:grid;place-items:center;background:var(--elev);
+  border:1.5px solid rgba(189,234,68,.5);box-shadow:0 0 30px rgba(87,210,149,.18);font:600 15px "Chakra Petch";color:var(--lime);position:relative}
+.node.core{background:var(--grad);border:0;color:var(--bg);box-shadow:0 0 36px rgba(87,210,149,.5)}
+.ph h4{font-size:16px;margin-top:14px}
+.ph p{font-size:12.5px;color:var(--t3);margin-top:4px;line-height:1.45}
+.loop{margin:6px auto 0;width:80%;height:46px;display:block}
+.loop-cap{text-align:center;font-size:12.5px;color:var(--t3);margin-top:-4px}
+
+/* sistemas */
+.sys{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+.sys .card .hd{display:flex;align-items:center;gap:12px}
+.sys .card .idx{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--elev);border:1.5px solid rgba(189,234,68,.5);font:600 14px "Chakra Petch";color:var(--lime);flex:none}
+.sys .card h3{margin:0;font-size:18px}
+.sys .card .tag{margin-left:auto}
+.sys .card.feature{grid-column:1/-1}
+.sys .card.feature .idx{background:var(--grad);border:0;color:var(--bg);box-shadow:0 0 24px rgba(87,210,149,.45)}
+
+/* pasos */
+.steps{list-style:none;margin:30px 0 8px;position:relative}
+.steps::before{content:"";position:absolute;left:22px;top:24px;bottom:24px;border-left:1.6px dashed rgba(255,255,255,.22)}
+.steps li{position:relative;display:grid;grid-template-columns:46px 1fr;gap:20px;padding:0 0 26px}
+.steps .node{width:46px;height:46px;font-size:13px}
+.steps h4{font-size:18px;margin-top:9px}
+.steps p{margin:4px 0 0;font-size:15px}
+.steps .m{display:inline-block;margin-top:10px}
+
+.demo{margin:20px 0 8px;display:flex;gap:22px;align-items:center}
+.demo .orb{flex:none;width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#BDEA44,#57D295 55%,#13CBC2);box-shadow:0 0 40px rgba(87,210,149,.5)}
+.demo h4{font-size:18px} .demo p{margin:4px 0 0;font-size:15px}
+
+ol.qs{list-style:none;counter-reset:q;margin:24px 0 8px}
+ol.qs li{counter-increment:q;display:grid;grid-template-columns:56px 1fr;gap:8px;padding:18px 0;border-top:1px solid var(--line);color:var(--t2)}
+ol.qs li:last-child{border-bottom:1px solid var(--line)}
+ol.qs li::before{content:counter(q,decimal-leading-zero);font:600 22px/1.2 "Chakra Petch";background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+ol.qs b{display:block;font-family:"Chakra Petch";font-size:16px;color:#fff;margin-bottom:2px}
+
+.sources{margin-top:36px;font-size:12.5px;color:var(--t3)}
+footer{padding:44px 0 64px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+footer svg{height:20px;width:auto}
+footer p{font-size:12.5px;color:var(--t3);margin:0}
+
+@media (max-width:760px){
+  .wrap{padding:0 16px}
+  .cover{padding:64px 0 48px}
+  .frame .body{grid-template-columns:1fr 1fr}
+  .frame .k:nth-child(2){border-right:0}
+  .frame .k:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .toc{grid-template-columns:1fr 1fr}
+  .two,.sys{grid-template-columns:1fr}
+  .hbar{grid-template-columns:1fr 70px}
+  .hbar .lab{grid-column:1/-1;margin-bottom:-6px}
+  .phases{grid-template-columns:1fr;text-align:left;gap:18px}
+  .phases::before{left:27px;right:auto;top:20px;bottom:20px;border-top:0;border-left:1.6px dashed rgba(255,255,255,.22)}
+  .ph{display:grid;grid-template-columns:54px 1fr;gap:16px;align-items:center}
+  .node{margin:0}
+  .ph h4{margin-top:0}
+  .loop,.loop-cap{display:none}
+  section{padding:56px 0 8px}
+}
+@media print{body::before{display:none}section{break-inside:avoid}}
+
+/* tipografía según la escala de marca (handoff: typography.scale_reference_px) */
+body{font-size:17px;line-height:1.65;font-feature-settings:"ss01","cv11";text-rendering:optimizeLegibility}
+h1,h2{text-wrap:balance;font-weight:600}
+.cover h1{font-size:clamp(40px,4vw + 18px,64px);line-height:1.04;letter-spacing:-.8px;font-weight:600}
+h2{font-size:30px;line-height:1.12;letter-spacing:-.3px;margin:14px 0 20px}
+h3{font:700 22px/1.3 Manrope,sans-serif;letter-spacing:-.2px;color:#fff;margin:44px 0 12px}
+h4,.ph h4,.plan h4,.steps h4,.demo h4,.two .card h4{font-family:Manrope,sans-serif;font-weight:700;letter-spacing:-.1px}
+.ph h4{font-size:15px}.steps h4{font-size:17px}
+.sys .card h3{font:700 18px/1.3 Manrope,sans-serif}
+p,ul.b li,ol.qs li{max-width:68ch}
+p{text-wrap:pretty}
+p.lead{font-size:19px;line-height:1.55;font-weight:500;color:var(--t-body)}
+.cover .sub{font-size:19px;line-height:1.55;max-width:56ch}
+.eyebrow,.chart .cap .eyebrow,th,.toc a::before,.cover .kicker{font-family:Manrope,sans-serif!important;font-weight:500!important;font-size:13px!important;letter-spacing:.2em!important;text-transform:uppercase}
+th{font-size:11.5px!important;font-weight:700!important;letter-spacing:.16em!important}
+.toc a::before{font-size:12px!important;font-weight:700!important;letter-spacing:.06em!important}
+.toc a{font-weight:500;font-size:15px}
+ol.qs b{font:700 16px/1.4 Manrope,sans-serif}
+ol.qs li::before{font-weight:600}
+td{font-size:14.5px;line-height:1.5}
+td.n,.hbar .val,.frame .v,.node{font-variant-numeric:tabular-nums;letter-spacing:0}
+.frame .v{font-weight:600;letter-spacing:-.5px}
+.tag{font-weight:700;font-size:11px;letter-spacing:.05em}
+.note,.frame-cap,.sources{font-weight:500}
+b,strong{font-weight:700}
+@media (max-width:760px){h2{font-size:26px}h3{font-size:20px}body{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <svg width="1246" height="188" viewBox="-34.92 -136.00 1245.54 188.03" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Artifizia | AI Growth Systems"><defs><linearGradient id="hdarkA" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#bdea44"/><stop offset="52%" stop-color="#57d295"/><stop offset="100%" stop-color="#13cbc2"/></linearGradient></defs><g transform="translate(-104.76,-184.35) scale(0.67153)"><circle cx="200" cy="150" r="26" fill="url(#hdarkA)"/><path d="M189 190 L156 300 L184 300 L200 236 L216 300 L244 300 L211 190 Z" fill="#ffffff"/></g><g fill="#ffffff" transform="translate(44.06,2.34) scale(0.74211)"><path d="M90.84 -10.68V-24.84L101.52000000000001 -35.4H132.36V-44.28L127.92 -48.72H109.08L104.64 -44.28V-40.44H91.32000000000001V-47.4L103.56 -59.76H133.44L145.68 -47.4V0.0H133.32V-9.24L123.72 0.0H101.52000000000001ZM122.4 -10.68 132.36 -20.279999999999998V-25.32H108.0L104.16 -21.599999999999998V-14.28L107.76 -10.68Z M165.48000000000002 -59.76H178.08V-49.559999999999995L188.04000000000002 -59.76H204.60000000000002V-48.12H191.04000000000002L179.04000000000002 -35.879999999999995V0.0H165.48000000000002Z M223.79999999999998 -11.879999999999999V-48.239999999999995H213.0V-59.76H224.04V-79.2H237.35999999999999V-59.76H255.72V-48.239999999999995H237.35999999999999V-16.2L242.04 -11.52H255.72V0.0H235.68Z M273.12 -59.76H286.68V0.0H273.12Z M313.67999999999995 -48.239999999999995H302.87999999999994V-59.76H313.67999999999995V-72.11999999999999L325.19999999999993 -83.64H345.71999999999997V-72.36H331.08L326.99999999999994 -68.39999999999999V-59.76H345.71999999999997V-48.239999999999995H327.23999999999995V0.0H313.67999999999995Z M361.32 -59.76H374.88V0.0H361.32Z M392.28000000000003 -10.92 426.84000000000003 -48.48V-48.72H393.48V-59.76H443.88V-48.839999999999996L409.32 -11.28V-11.04H443.88V0.0H392.28000000000003Z M461.28 -59.76H474.84V0.0H461.28Z M494.64 -10.68V-24.84L505.32 -35.4H536.16V-44.28L531.72 -48.72H512.88L508.44 -44.28V-40.44H495.12V-47.4L507.36 -59.76H537.24L549.48 -47.4V0.0H537.12V-9.24L527.52 0.0H505.32ZM526.1999999999999 -10.68 536.16 -20.279999999999998V-25.32H511.8L507.96 -21.599999999999998V-14.28L511.56 -10.68Z"/><circle cx="279.90" cy="-71.62" r="10.31"/><circle cx="368.10" cy="-71.62" r="10.31"/><circle cx="468.06" cy="-71.62" r="10.31"/></g><rect x="521.67" y="-56.76" width="3" height="73.87" fill="#ffffff" fill-opacity=".18"/><path transform="translate(594.51,-4.49) scale(0.4260)" fill="#7FE0B0" d="M0.00 0.00L23.40 -72.00L38.43 -72.00L61.83 0.00L51.00 0.00L29.43 -65.70L32.17 -65.70L10.83 0.00ZM12.13 -16.23L12.13 -26.03L49.73 -26.03L49.73 -16.23ZM93.83 0.00L93.83 -72.00L104.30 -72.00L104.30 0.00ZM212.73 1.50Q205.52 1.50 199.40 -1.03Q193.28 -3.57 188.78 -8.40Q184.28 -13.23 181.79 -20.19Q179.30 -27.15 179.30 -36.00Q179.30 -47.63 183.55 -56.03Q187.80 -64.42 195.34 -68.94Q202.88 -73.47 212.73 -73.47Q225.43 -73.47 233.02 -67.56Q240.60 -61.65 243.37 -51.23L232.73 -49.33Q230.57 -55.78 225.67 -59.64Q220.77 -63.50 213.33 -63.53Q205.68 -63.60 200.61 -60.16Q195.53 -56.72 192.98 -50.48Q190.43 -44.25 190.40 -36.00Q190.37 -27.75 192.92 -21.58Q195.47 -15.42 200.58 -11.96Q205.68 -8.50 213.33 -8.43Q219.52 -8.37 223.93 -10.73Q228.35 -13.08 230.96 -17.70Q233.57 -22.32 234.30 -29.00L220.30 -29.00L220.30 -37.40L245.40 -37.40Q245.52 -36.50 245.56 -35.03Q245.60 -33.57 245.60 -33.17Q245.60 -23.13 241.75 -15.29Q237.90 -7.45 230.56 -2.98Q223.22 1.50 212.73 1.50ZM277.60 0.00L277.60 -72.00L306.70 -72.00Q307.75 -72.00 309.30 -71.92Q310.85 -71.85 312.23 -71.60Q318.27 -70.67 322.29 -67.51Q326.32 -64.35 328.31 -59.56Q330.30 -54.77 330.30 -48.93Q330.30 -40.33 325.90 -34.12Q321.50 -27.90 312.70 -26.37L308.43 -25.87L288.07 -25.87L288.07 0.00ZM319.70 0.00L305.50 -29.30L316.03 -32.00L331.63 0.00ZM288.07 -35.73L306.30 -35.73Q307.28 -35.73 308.51 -35.83Q309.73 -35.93 310.83 -36.20Q314.05 -36.97 315.99 -38.98Q317.93 -41.00 318.80 -43.64Q319.67 -46.28 319.67 -48.93Q319.67 -51.58 318.80 -54.23Q317.93 -56.87 315.99 -58.88Q314.05 -60.90 310.83 -61.67Q309.73 -61.95 308.51 -62.04Q307.28 -62.13 306.30 -62.13L288.07 -62.13ZM394.67 1.50Q383.88 1.50 376.28 -3.23Q368.67 -7.97 364.65 -16.42Q360.63 -24.87 360.63 -36.00Q360.63 -47.13 364.65 -55.58Q368.67 -64.03 376.28 -68.77Q383.88 -73.50 394.67 -73.50Q405.45 -73.50 413.06 -68.77Q420.67 -64.03 424.68 -55.58Q428.70 -47.13 428.70 -36.00Q428.70 -24.87 424.68 -16.42Q420.67 -7.97 413.06 -3.23Q405.45 1.50 394.67 1.50ZM394.67 -8.43Q402.32 -8.37 407.41 -11.83Q412.50 -15.28 415.05 -21.52Q417.60 -27.75 417.60 -36.00Q417.60 -44.25 415.05 -50.43Q412.50 -56.60 407.41 -60.05Q402.32 -63.50 394.67 -63.57Q387.02 -63.63 381.94 -60.18Q376.87 -56.73 374.32 -50.49Q371.77 -44.25 371.73 -36.00Q371.70 -27.75 374.25 -21.58Q376.80 -15.42 381.91 -11.96Q387.02 -8.50 394.67 -8.43ZM472.97 0.00L452.03 -72.00L463.00 -72.00L478.17 -17.53L493.30 -71.93L504.30 -72.00L519.47 -17.53L534.60 -72.00L545.60 -72.00L524.67 0.00L514.27 0.00L498.80 -53.83L483.37 0.00ZM593.87 0.00L593.87 -62.13L569.93 -62.13L569.93 -72.00L628.27 -72.00L628.27 -62.13L604.33 -62.13L604.33 0.00ZM658.27 0.00L658.27 -72.00L668.73 -72.00L668.73 -40.97L704.73 -40.97L704.73 -72.00L715.20 -72.00L715.20 0.00L704.73 0.00L704.73 -31.10L668.73 -31.10L668.73 0.00ZM819.30 1.50Q811.53 1.50 805.31 -1.18Q799.08 -3.85 795.06 -8.82Q791.03 -13.78 789.87 -20.63L800.73 -22.30Q802.38 -15.70 807.63 -12.03Q812.88 -8.37 819.90 -8.37Q824.23 -8.37 827.90 -9.73Q831.57 -11.10 833.78 -13.68Q836.00 -16.25 836.00 -19.87Q836.00 -21.82 835.33 -23.32Q834.67 -24.82 833.48 -25.93Q832.28 -27.03 830.62 -27.87Q828.95 -28.70 826.97 -29.30L808.50 -34.77Q805.80 -35.55 803.01 -36.83Q800.22 -38.12 797.88 -40.18Q795.55 -42.25 794.11 -45.33Q792.67 -48.42 792.67 -52.80Q792.67 -59.47 796.09 -64.09Q799.52 -68.72 805.35 -71.09Q811.18 -73.47 818.43 -73.43Q825.75 -73.37 831.52 -70.87Q837.28 -68.37 841.11 -63.68Q844.93 -58.98 846.40 -52.37L835.20 -50.43Q834.43 -54.52 832.00 -57.44Q829.57 -60.37 826.00 -61.93Q822.43 -63.50 818.30 -63.57Q814.28 -63.63 810.98 -62.33Q807.67 -61.03 805.68 -58.70Q803.70 -56.37 803.70 -53.30Q803.70 -50.30 805.44 -48.46Q807.18 -46.62 809.77 -45.54Q812.35 -44.47 814.90 -43.77L828.20 -40.00Q830.70 -39.32 833.88 -38.14Q837.07 -36.97 840.04 -34.85Q843.02 -32.73 844.96 -29.28Q846.90 -25.82 846.90 -20.53Q846.90 -15.12 844.70 -10.98Q842.50 -6.85 838.67 -4.08Q834.83 -1.32 829.85 0.09Q824.87 1.50 819.30 1.50ZM893.93 0.00L893.93 -29.73L869.57 -72.00L881.77 -72.00L899.23 -41.73L916.67 -72.00L928.87 -72.00L904.54 -29.73L904.54 0.00ZM980.97 1.50Q973.20 1.50 966.98 -1.18Q960.75 -3.85 956.73 -8.82Q952.70 -13.78 951.53 -20.63L962.40 -22.30Q964.05 -15.70 969.30 -12.03Q974.55 -8.37 981.57 -8.37Q985.90 -8.37 989.57 -9.73Q993.23 -11.10 995.45 -13.68Q997.67 -16.25 997.67 -19.87Q997.67 -21.82 997.00 -23.32Q996.33 -24.82 995.14 -25.93Q993.95 -27.03 992.28 -27.87Q990.62 -28.70 988.63 -29.30L970.17 -34.77Q967.47 -35.55 964.68 -36.83Q961.88 -38.12 959.55 -40.18Q957.22 -42.25 955.78 -45.33Q954.33 -48.42 954.33 -52.80Q954.33 -59.47 957.76 -64.09Q961.18 -68.72 967.02 -71.09Q972.85 -73.47 980.10 -73.43Q987.42 -73.37 993.18 -70.87Q998.95 -68.37 1002.78 -63.68Q1006.60 -58.98 1008.07 -52.37L996.87 -50.43Q996.10 -54.52 993.67 -57.44Q991.23 -60.37 987.67 -61.93Q984.10 -63.50 979.97 -63.57Q975.95 -63.63 972.64 -62.33Q969.34 -61.03 967.35 -58.70Q965.37 -56.37 965.37 -53.30Q965.37 -50.30 967.11 -48.46Q968.85 -46.62 971.43 -45.54Q974.02 -44.47 976.57 -43.77L989.87 -40.00Q992.37 -39.32 995.55 -38.14Q998.73 -36.97 1001.71 -34.85Q1004.69 -32.73 1006.63 -29.28Q1008.57 -25.82 1008.57 -20.53Q1008.57 -15.12 1006.37 -10.98Q1004.17 -6.85 1000.33 -4.08Q996.50 -1.32 991.52 0.09Q986.53 1.50 980.97 1.50ZM1059.17 0.00L1059.17 -62.13L1035.23 -62.13L1035.23 -72.00L1093.57 -72.00L1093.57 -62.13L1069.63 -62.13L1069.63 0.00ZM1123.57 0.00L1123.57 -72.00L1169.57 -72.00L1169.57 -62.13L1134.04 -62.13L1134.04 -41.97L1163.57 -41.97L1163.57 -32.10L1134.04 -32.10L1134.04 -9.87L1169.57 -9.87L1169.57 0.00ZM1203.57 0.00L1203.57 -72.00L1213.04 -72.00L1239.10 -17.83L1265.07 -72.00L1274.60 -72.00L1274.60 -0.03L1264.73 -0.03L1264.73 -49.30L1241.47 0.00L1236.70 0.00L1213.44 -49.30L1213.44 0.00ZM1336.70 1.50Q1328.94 1.50 1322.71 -1.18Q1316.49 -3.85 1312.46 -8.82Q1308.44 -13.78 1307.27 -20.63L1318.14 -22.30Q1319.79 -15.70 1325.04 -12.03Q1330.29 -8.37 1337.30 -8.37Q1341.64 -8.37 1345.30 -9.73Q1348.97 -11.10 1351.18 -13.68Q1353.40 -16.25 1353.40 -19.87Q1353.40 -21.82 1352.73 -23.32Q1352.07 -24.82 1350.88 -25.93Q1349.69 -27.03 1348.02 -27.87Q1346.35 -28.70 1344.37 -29.30L1325.90 -34.77Q1323.20 -35.55 1320.41 -36.83Q1317.62 -38.12 1315.28 -40.18Q1312.95 -42.25 1311.51 -45.33Q1310.07 -48.42 1310.07 -52.80Q1310.07 -59.47 1313.49 -64.09Q1316.92 -68.72 1322.75 -71.09Q1328.59 -73.47 1335.84 -73.43Q1343.15 -73.37 1348.92 -70.87Q1354.69 -68.37 1358.51 -63.68Q1362.34 -58.98 1363.80 -52.37L1352.60 -50.43Q1351.84 -54.52 1349.40 -57.44Q1346.97 -60.37 1343.40 -61.93Q1339.84 -63.50 1335.70 -63.57Q1331.69 -63.63 1328.38 -62.33Q1325.07 -61.03 1323.09 -58.70Q1321.10 -56.37 1321.10 -53.30Q1321.10 -50.30 1322.84 -48.46Q1324.59 -46.62 1327.17 -45.54Q1329.75 -44.47 1332.30 -43.77L1345.60 -40.00Q1348.10 -39.32 1351.28 -38.14Q1354.47 -36.97 1357.44 -34.85Q1360.42 -32.73 1362.36 -29.28Q1364.30 -25.82 1364.30 -20.53Q1364.30 -15.12 1362.10 -10.98Q1359.90 -6.85 1356.07 -4.08Q1352.24 -1.32 1347.25 0.09Q1342.27 1.50 1336.70 1.50Z"/></svg>
+  <span class="pill">AI Scan</span>
+</header>
+
+<div class="cover">
+  <div class="eyebrow">AI Scan · Ideas de propuesta</div>
+  <h1>Koality Deals<span class="hl">Inland Empire, California</span></h1>
+  <p class="sub">Lectura de la presencia digital, las reseñas y los referentes de la zona, con ideas para un sistema de crecimiento full funnel.</p>
+  <div class="meta"><span>Rialto</span><span>San Bernardino</span><span>Riverside</span><span>24 de noviembre de 2026</span></div>
+
+  <div class="frame" role="img" aria-label="Ficha del AI Scan: 237 mil reproducciones de una creadora local, 4,2 en Google con 140 reseñas, más de 7 mil seguidores y tres sedes">
+    <div class="bar"><i></i><i></i><i></i><b>AI Scan · Koality Deals</b><em>Listo</em></div>
+    <div class="body">
+      <div class="k"><div class="v g">237k</div><div class="l">reproducciones del reel de una creadora local sobre la tienda</div></div>
+      <div class="k"><div class="v">4,2</div><div class="l">en Google, con 140 reseñas</div></div>
+      <div class="k"><div class="v">7k+</div><div class="l">seguidores entre Instagram y TikTok</div></div>
+      <div class="k"><div class="v">3</div><div class="l">sedes con mercancía nueva cada semana</div></div>
+    </div>
+  </div>
+  <p class="frame-cap">Entregable del agente AI Scan, con datos públicos del 20 al 24 de noviembre de 2026.</p>
+</div>
+
+<ol class="toc">
+  <li><a href="#resumen">Resumen</a></li>
+  <li><a href="#scan">Scan</a></li>
+  <li><a href="#referentes">Referentes</a></li>
+  <li><a href="#ideas">Ideas de propuesta</a></li>
+  <li><a href="#plan">Plan de 90 días</a></li>
+  <li><a href="#preguntas">Preguntas</a></li>
+</ol>
+
+<section id="resumen">
+  <div class="eyebrow">01 · Resumen</div>
+  <h2>Tracción local real<span class="hl">y mucho recorrido digital</span></h2>
+  <p class="lead">Koality Deals son tres tiendas de descuento de comestibles y hogar a una hora al este de Los Ángeles, con marcas conocidas hasta un 50 % más baratas.</p>
+  <p>Sus clientes vuelven, la comunidad responde y los creadores locales ya hablan de ellas. Las ideas de este documento conectan esos activos en un sistema full funnel: traer gente nueva con contenido, creadores, Meta y Google; convertirla en suscriptora de avisos, y hacerla volver cada semana.</p>
+</section>
+
+<section id="scan">
+  <div class="eyebrow">02 · Scan</div>
+  <h2>Presencia digital<span class="hl">y reseñas</span></h2>
+  <p>El dato más claro: cuando una creadora local con 7,7k seguidores habló de la tienda, llegó a 237.727 personas. El producto y el precio generan conversación.</p>
+
+  <div class="card chart">
+    <div class="cap"><span class="eyebrow">Reproducciones por reel</span><span>mejor pieza de cada cuenta</span></div>
+    <div class="hbar"><span class="lab">Creadora local · @adventuresintheie</span><div class="track"><div class="fill g" style="width:100%"></div></div><span class="val">237.727</span></div>
+    <div class="hbar"><span class="lab">@koality.outlet</span><div class="track"><div class="fill" style="width:2.2%;min-width:6px;background:#3FDCD4"></div></div><span class="val">5.294</span></div>
+    <div class="hbar"><span class="lab">@koalitydeals</span><div class="track"><div class="fill" style="width:.7%;min-width:4px;background:#A7B2C6"></div></div><span class="val">1.559</span></div>
+  </div>
+
+  <h3>Canales</h3>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Canal</th><th>Sede</th><th>Seguidores</th><th>Rendimiento</th></tr></thead>
+    <tbody>
+      <tr><td>Instagram @koality.outlet</td><td>San Bernardino</td><td class="n">4.280</td><td>1.500–5.300 reproducciones por reel</td></tr>
+      <tr><td>TikTok @koalitydeals</td><td>Rialto</td><td class="n">2.282</td><td>27,4k likes acumulados</td></tr>
+      <tr><td>Instagram @koalitydeals</td><td>Rialto</td><td class="n">723</td><td>120–1.559 reproducciones por reel</td></tr>
+      <tr><td>Facebook</td><td>Rialto</td><td class="n">29</td><td>Última publicación en junio</td></tr>
+      <tr><td>Instagram @koalitydealsriv</td><td>Riverside</td><td class="n">19</td><td>Cuenta recién abierta</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Datos públicos del 20 de noviembre de 2026.</p>
+
+  <h3>Reseñas</h3>
+  <p>Google suma 140 reseñas con 4,2; Yelp, unas 18 con alrededor de 3,0. Los clientes destacan el precio y los hallazgos. Los comentarios a mejorar se concentran en las fechas de consumo de algunos productos y en la espera en caja.</p>
+
+  <h3>Marca y contenido</h3>
+  <ul class="b">
+    <li><b>Tres cuentas y dos nombres</b> conviven en redes: la sede de San Bernardino se presentaba como «Acosto» hasta julio.</li>
+    <li><b>Horarios y medios de pago</b> varían por sede: Rialto acepta EBT; San Bernardino, efectivo y Zelle.</li>
+    <li><b>Lo que mejor funciona</b> habla como un cliente («this store is a savings hack») o muestra comunidad: sorteos y el food drive con bancos de alimentos.</li>
+  </ul>
+
+  <div class="two">
+    <div class="card light"><span class="tag pos">Activos</span>
+      <ul class="b"><li>Precio real en marcas conocidas</li><li>Público hispano y bilingüe</li><li>Mercancía nueva cada semana</li><li>Sorteos que ya recogen contactos</li></ul></div>
+    <div class="card"><span class="tag info">Oportunidades</span>
+      <ul class="b"><li>Una sola marca para las tres sedes</li><li>Un canal propio de avisos</li><li>Personas y creadores a cámara</li><li>Fichas de Google y web</li></ul></div>
+  </div>
+</section>
+
+<section id="referentes">
+  <div class="eyebrow">03 · Referentes</div>
+  <h2>Lo que funciona<span class="hl">en el sur de California</span></h2>
+  <p>Los supermercados de la zona que crecen en redes enseñan personas, comida y comunidad. En Northgate se repite el patrón de Koality: el reel de un creador rinde unas diez veces más que los de la marca.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Marca</th><th>Seguidores IG</th><th>Qué aprender</th></tr></thead>
+    <tbody>
+      <tr><td>Northgate González Market</td><td class="n">104k</td><td>Reels propios de 2–11k; el de un creador en su reapertura, 88k. Carniceros a cámara, menús de temporada, entrega a domicilio.</td></tr>
+      <tr><td>Cardenas Markets</td><td class="n">70k</td><td>Folleto semanal, compra online y app de recompensas desde la bio.</td></tr>
+      <tr><td>Superior Grocers</td><td class="n">38k</td><td>Mismo público hispano que busca valor.</td></tr>
+      <tr><td>El Super</td><td class="n">22k</td><td>Una promesa simple y repetida: grandes ahorros.</td></tr>
+      <tr><td>Pic 'N' Save Bargains</td><td class="n">6,2k</td><td>Programa de puntos; publica varios flyers al día con poca respuesta (400–700 reproducciones).</td></tr>
+    </tbody>
+  </table></div>
+  <div class="two">
+    <div class="card"><span class="tag neu">Mercado</span><h4>Compradores buscando sitio</h4><p>Grocery Outlet <a href="https://abc7.com/post/grocery-outlet-bargain-market-closing-36-stores-including-several-southern-california/18697799/">cierra 36 tiendas</a>, seis en el sur de California y una en Ontario.</p></div>
+    <div class="card"><span class="tag neu">Competencia</span><h4>Un concepto que vuelve</h4><p>Pic 'N' Save <a href="https://iecn.com/pic-n-save-bargains-groceries-returns-this-spring-with-four-new-southern-california-stores/">reabre</a> en San Bernardino y Fontana con comestibles y puntos.</p></div>
+  </div>
+</section>
+
+<section id="ideas">
+  <div class="eyebrow">04 · Ideas de propuesta</div>
+  <h2>Un sistema full funnel<span class="hl">en cuatro piezas</span></h2>
+  <p>Cada pieza alimenta a la siguiente: la marca y Google generan confianza, el contenido y Meta atraen, y el club convierte la visita en recurrencia.</p>
+
+  <div class="phases" role="img" aria-label="Recorrido del cliente: descubre, confía, visita, se suscribe al Koality Club y vuelve con cada aviso">
+    <div class="ph"><div class="node">01</div><div><h4>Descubre</h4><p>Reels, creadores, Meta</p></div></div>
+    <div class="ph"><div class="node">02</div><div><h4>Confía</h4><p>Google, reseñas, marca</p></div></div>
+    <div class="ph"><div class="node">03</div><div><h4>Visita</h4><p>Tienda, cupón, QR</p></div></div>
+    <div class="ph"><div class="node">04</div><div><h4>Se suscribe</h4><p>Koality Club</p></div></div>
+    <div class="ph"><div class="node core">05</div><div><h4>Vuelve</h4><p>Aviso semanal, puntos</p></div></div>
+  </div>
+  <svg class="loop" viewBox="0 0 800 46" preserveAspectRatio="none" aria-hidden="true">
+    <defs><linearGradient id="lg" x1="1" x2="0"><stop offset="0" stop-color="#13CBC2"/><stop offset=".5" stop-color="#57D295"/><stop offset="1" stop-color="#BDEA44"/></linearGradient></defs>
+    <path d="M790 2 C790 44, 400 44, 400 4" fill="none" stroke="url(#lg)" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/>
+  </svg>
+  <p class="loop-cap">cada aviso devuelve al cliente a la tienda</p>
+
+  <div class="sys">
+    <div class="card light feature">
+      <div class="hd"><span class="idx">01</span><h3>Koality Club: avisos y fidelización</h3><span class="tag pos">Clientes</span></div>
+      <ul class="b">
+        <li><b>Alta:</b> un QR en caja y en la puerta, con cupón de bienvenida. Lleva a digital las papeletas de los sorteos.</li>
+        <li><b>Canal:</b> WhatsApp o SMS, según lo que usen sus clientes y con consentimiento expreso.</li>
+        <li><b>Ritmo:</b> un aviso semanal con las llegadas y alertas cuando entra un lote fuerte, por sede.</li>
+        <li><b>Fidelización:</b> puntos por visita, sorteos para miembros y acceso anticipado a lotes.</li>
+        <li><b>Medición:</b> un cupón por mensaje y las visitas repetidas por miembro.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="hd"><span class="idx">02</span><h3>Una marca, tres sedes</h3><span class="tag info">Marca</span></div>
+      <ul class="b">
+        <li><b>Arquitectura:</b> Koality · Rialto, · San Bernardino, · Riverside. Una cuenta por red, con sedes como ubicaciones.</li>
+        <li><b>Promesa:</b> marcas que ya conoces, a mitad de precio, en inglés y español.</li>
+        <li><b>Transparencia:</b> de dónde vienen los precios y qué se revisa antes del estante.</li>
+        <li><b>Identidad:</b> el koala como voz, etiquetas reconocibles, horarios y pagos iguales en todo.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="hd"><span class="idx">03</span><h3>Personas y creadores</h3><span class="tag info">Contenido</span></div>
+      <ul class="b">
+        <li><b>Una cara a cámara</b> que hable como cliente.</li>
+        <li><b>Series:</b> carrito de 20 $ frente al súper; llegadas de la semana; por qué está tan barato; comunidad.</li>
+        <li><b>Creadores locales:</b> uno al mes, empezando por quien ya habló de Koality.</li>
+        <li><b>Producción con sistema:</b> agentes que investigan y guionizan; personas que revisan.</li>
+      </ul>
+    </div>
+    <div class="card" style="grid-column:1/-1">
+      <div class="hd"><span class="idx">04</span><h3>Google y Meta, por radio de tienda</h3><span class="tag info">Performance</span></div>
+      <ul class="b">
+        <li><b>Google Business:</b> tres fichas completas y coherentes, publicaciones semanales y un QR para pedir reseñas.</li>
+        <li><b>Web:</b> una página con las sedes, horarios, pagos y alta al club.</li>
+        <li><b>Meta a 5–8 millas de cada tienda:</b> amplificar los reels de creadores que funcionen y captar altas al club.</li>
+        <li><b>E-commerce, como siguiente paso:</b> reservar desde el club y recoger en tienda.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="eyebrow">05 · Plan de 90 días</div>
+  <h2>Ordenar, lanzar<span class="hl">y escalar</span></h2>
+  <ol class="steps">
+    <li><span class="node">M1</span><div><h4>Ordenar</h4><p>Marca unificada, tres fichas de Google, web y línea base de ventas por sede.</p><span class="tag neu m">Se mide: ventas y ticket por sede, reseñas</span></div></li>
+    <li><span class="node">M2</span><div><h4>Lanzar el club</h4><p>Koality Club con QR en caja, primeras series de contenido y primer creador local.</p><span class="tag neu m">Se mide: altas al club, uso de cupones</span></div></li>
+    <li><span class="node core">M3</span><div><h4>Escalar</h4><p>Meta por radio de tienda, segundo creador y alertas de lotes.</p><span class="tag pos m">Se mide: coste por alta, visitas repetidas, ventas frente a la línea base</span></div></li>
+  </ol>
+  <div class="card light demo"><div class="orb" aria-hidden="true"></div><div><h4>El sistema, funcionando</h4><p>Demo del sistema de contenido de Artifizia: de la investigación del mercado local a la pieza lista para publicar.</p></div></div>
+</section>
+
+<section id="preguntas">
+  <div class="eyebrow">06 · Preguntas</div>
+  <h2>Para dimensionar<span class="hl">el sistema</span></h2>
+  <ol class="qs">
+    <li><div><b>Objetivo</b>Si en 90 días esto sale bien, ¿qué cambió en el negocio: más tráfico, Riverside a pleno o venta online?</div></li>
+    <li><div><b>Números</b>¿Cuánto vende cada tienda al mes y cuál es el ticket medio?</div></li>
+    <li><div><b>Recurrencia</b>De cada diez clientes, ¿cuántos vuelven, y cómo se enteran hoy de lo que llegó?</div></li>
+    <li><div><b>Mercancía</b>¿Cada cuánto entra producto nuevo y con cuánta antelación lo saben?</div></li>
+    <li><div><b>Equipo</b>¿Quién decide y quién crea hoy el contenido?</div></li>
+    <li><div><b>Inversión</b>¿Han hecho anuncios, cuánto invirtieron y qué resultado tuvieron?</div></li>
+  </ol>
+  <p class="sources">Fuentes: perfiles públicos de Instagram, TikTok y Facebook; Google; Yelp; <a href="https://abc7.com/post/grocery-outlet-bargain-market-closing-36-stores-including-several-southern-california/18697799/">ABC7</a>; <a href="https://iecn.com/pic-n-save-bargains-groceries-returns-this-spring-with-four-new-southern-california-stores/">IECN</a>. Datos recogidos del 20 al 24 de noviembre de 2026.</p>
+</section>
+
+<footer>
+  <svg width="1246" height="188" viewBox="-34.92 -136.00 1245.54 188.03" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Artifizia | AI Growth Systems"><defs><linearGradient id="hdarkB" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#bdea44"/><stop offset="52%" stop-color="#57d295"/><stop offset="100%" stop-color="#13cbc2"/></linearGradient></defs><g transform="translate(-104.76,-184.35) scale(0.67153)"><circle cx="200" cy="150" r="26" fill="url(#hdarkB)"/><path d="M189 190 L156 300 L184 300 L200 236 L216 300 L244 300 L211 190 Z" fill="#ffffff"/></g><g fill="#ffffff" transform="translate(44.06,2.34) scale(0.74211)"><path d="M90.84 -10.68V-24.84L101.52000000000001 -35.4H132.36V-44.28L127.92 -48.72H109.08L104.64 -44.28V-40.44H91.32000000000001V-47.4L103.56 -59.76H133.44L145.68 -47.4V0.0H133.32V-9.24L123.72 0.0H101.52000000000001ZM122.4 -10.68 132.36 -20.279999999999998V-25.32H108.0L104.16 -21.599999999999998V-14.28L107.76 -10.68Z M165.48000000000002 -59.76H178.08V-49.559999999999995L188.04000000000002 -59.76H204.60000000000002V-48.12H191.04000000000002L179.04000000000002 -35.879999999999995V0.0H165.48000000000002Z M223.79999999999998 -11.879999999999999V-48.239999999999995H213.0V-59.76H224.04V-79.2H237.35999999999999V-59.76H255.72V-48.239999999999995H237.35999999999999V-16.2L242.04 -11.52H255.72V0.0H235.68Z M273.12 -59.76H286.68V0.0H273.12Z M313.67999999999995 -48.239999999999995H302.87999999999994V-59.76H313.67999999999995V-72.11999999999999L325.19999999999993 -83.64H345.71999999999997V-72.36H331.08L326.99999999999994 -68.39999999999999V-59.76H345.71999999999997V-48.239999999999995H327.23999999999995V0.0H313.67999999999995Z M361.32 -59.76H374.88V0.0H361.32Z M392.28000000000003 -10.92 426.84000000000003 -48.48V-48.72H393.48V-59.76H443.88V-48.839999999999996L409.32 -11.28V-11.04H443.88V0.0H392.28000000000003Z M461.28 -59.76H474.84V0.0H461.28Z M494.64 -10.68V-24.84L505.32 -35.4H536.16V-44.28L531.72 -48.72H512.88L508.44 -44.28V-40.44H495.12V-47.4L507.36 -59.76H537.24L549.48 -47.4V0.0H537.12V-9.24L527.52 0.0H505.32ZM526.1999999999999 -10.68 536.16 -20.279999999999998V-25.32H511.8L507.96 -21.599999999999998V-14.28L511.56 -10.68Z"/><circle cx="279.90" cy="-71.62" r="10.31"/><circle cx="368.10" cy="-71.62" r="10.31"/><circle cx="468.06" cy="-71.62" r="10.31"/></g><rect x="521.67" y="-56.76" width="3" height="73.87" fill="#ffffff" fill-opacity=".18"/><path transform="translate(594.51,-4.49) scale(0.4260)" fill="#7FE0B0" d="M0.00 0.00L23.40 -72.00L38.43 -72.00L61.83 0.00L51.00 0.00L29.43 -65.70L32.17 -65.70L10.83 0.00ZM12.13 -16.23L12.13 -26.03L49.73 -26.03L49.73 -16.23ZM93.83 0.00L93.83 -72.00L104.30 -72.00L104.30 0.00ZM212.73 1.50Q205.52 1.50 199.40 -1.03Q193.28 -3.57 188.78 -8.40Q184.28 -13.23 181.79 -20.19Q179.30 -27.15 179.30 -36.00Q179.30 -47.63 183.55 -56.03Q187.80 -64.42 195.34 -68.94Q202.88 -73.47 212.73 -73.47Q225.43 -73.47 233.02 -67.56Q240.60 -61.65 243.37 -51.23L232.73 -49.33Q230.57 -55.78 225.67 -59.64Q220.77 -63.50 213.33 -63.53Q205.68 -63.60 200.61 -60.16Q195.53 -56.72 192.98 -50.48Q190.43 -44.25 190.40 -36.00Q190.37 -27.75 192.92 -21.58Q195.47 -15.42 200.58 -11.96Q205.68 -8.50 213.33 -8.43Q219.52 -8.37 223.93 -10.73Q228.35 -13.08 230.96 -17.70Q233.57 -22.32 234.30 -29.00L220.30 -29.00L220.30 -37.40L245.40 -37.40Q245.52 -36.50 245.56 -35.03Q245.60 -33.57 245.60 -33.17Q245.60 -23.13 241.75 -15.29Q237.90 -7.45 230.56 -2.98Q223.22 1.50 212.73 1.50ZM277.60 0.00L277.60 -72.00L306.70 -72.00Q307.75 -72.00 309.30 -71.92Q310.85 -71.85 312.23 -71.60Q318.27 -70.67 322.29 -67.51Q326.32 -64.35 328.31 -59.56Q330.30 -54.77 330.30 -48.93Q330.30 -40.33 325.90 -34.12Q321.50 -27.90 312.70 -26.37L308.43 -25.87L288.07 -25.87L288.07 0.00ZM319.70 0.00L305.50 -29.30L316.03 -32.00L331.63 0.00ZM288.07 -35.73L306.30 -35.73Q307.28 -35.73 308.51 -35.83Q309.73 -35.93 310.83 -36.20Q314.05 -36.97 315.99 -38.98Q317.93 -41.00 318.80 -43.64Q319.67 -46.28 319.67 -48.93Q319.67 -51.58 318.80 -54.23Q317.93 -56.87 315.99 -58.88Q314.05 -60.90 310.83 -61.67Q309.73 -61.95 308.51 -62.04Q307.28 -62.13 306.30 -62.13L288.07 -62.13ZM394.67 1.50Q383.88 1.50 376.28 -3.23Q368.67 -7.97 364.65 -16.42Q360.63 -24.87 360.63 -36.00Q360.63 -47.13 364.65 -55.58Q368.67 -64.03 376.28 -68.77Q383.88 -73.50 394.67 -73.50Q405.45 -73.50 413.06 -68.77Q420.67 -64.03 424.68 -55.58Q428.70 -47.13 428.70 -36.00Q428.70 -24.87 424.68 -16.42Q420.67 -7.97 413.06 -3.23Q405.45 1.50 394.67 1.50ZM394.67 -8.43Q402.32 -8.37 407.41 -11.83Q412.50 -15.28 415.05 -21.52Q417.60 -27.75 417.60 -36.00Q417.60 -44.25 415.05 -50.43Q412.50 -56.60 407.41 -60.05Q402.32 -63.50 394.67 -63.57Q387.02 -63.63 381.94 -60.18Q376.87 -56.73 374.32 -50.49Q371.77 -44.25 371.73 -36.00Q371.70 -27.75 374.25 -21.58Q376.80 -15.42 381.91 -11.96Q387.02 -8.50 394.67 -8.43ZM472.97 0.00L452.03 -72.00L463.00 -72.00L478.17 -17.53L493.30 -71.93L504.30 -72.00L519.47 -17.53L534.60 -72.00L545.60 -72.00L524.67 0.00L514.27 0.00L498.80 -53.83L483.37 0.00ZM593.87 0.00L593.87 -62.13L569.93 -62.13L569.93 -72.00L628.27 -72.00L628.27 -62.13L604.33 -62.13L604.33 0.00ZM658.27 0.00L658.27 -72.00L668.73 -72.00L668.73 -40.97L704.73 -40.97L704.73 -72.00L715.20 -72.00L715.20 0.00L704.73 0.00L704.73 -31.10L668.73 -31.10L668.73 0.00ZM819.30 1.50Q811.53 1.50 805.31 -1.18Q799.08 -3.85 795.06 -8.82Q791.03 -13.78 789.87 -20.63L800.73 -22.30Q802.38 -15.70 807.63 -12.03Q812.88 -8.37 819.90 -8.37Q824.23 -8.37 827.90 -9.73Q831.57 -11.10 833.78 -13.68Q836.00 -16.25 836.00 -19.87Q836.00 -21.82 835.33 -23.32Q834.67 -24.82 833.48 -25.93Q832.28 -27.03 830.62 -27.87Q828.95 -28.70 826.97 -29.30L808.50 -34.77Q805.80 -35.55 803.01 -36.83Q800.22 -38.12 797.88 -40.18Q795.55 -42.25 794.11 -45.33Q792.67 -48.42 792.67 -52.80Q792.67 -59.47 796.09 -64.09Q799.52 -68.72 805.35 -71.09Q811.18 -73.47 818.43 -73.43Q825.75 -73.37 831.52 -70.87Q837.28 -68.37 841.11 -63.68Q844.93 -58.98 846.40 -52.37L835.20 -50.43Q834.43 -54.52 832.00 -57.44Q829.57 -60.37 826.00 -61.93Q822.43 -63.50 818.30 -63.57Q814.28 -63.63 810.98 -62.33Q807.67 -61.03 805.68 -58.70Q803.70 -56.37 803.70 -53.30Q803.70 -50.30 805.44 -48.46Q807.18 -46.62 809.77 -45.54Q812.35 -44.47 814.90 -43.77L828.20 -40.00Q830.70 -39.32 833.88 -38.14Q837.07 -36.97 840.04 -34.85Q843.02 -32.73 844.96 -29.28Q846.90 -25.82 846.90 -20.53Q846.90 -15.12 844.70 -10.98Q842.50 -6.85 838.67 -4.08Q834.83 -1.32 829.85 0.09Q824.87 1.50 819.30 1.50ZM893.93 0.00L893.93 -29.73L869.57 -72.00L881.77 -72.00L899.23 -41.73L916.67 -72.00L928.87 -72.00L904.54 -29.73L904.54 0.00ZM980.97 1.50Q973.20 1.50 966.98 -1.18Q960.75 -3.85 956.73 -8.82Q952.70 -13.78 951.53 -20.63L962.40 -22.30Q964.05 -15.70 969.30 -12.03Q974.55 -8.37 981.57 -8.37Q985.90 -8.37 989.57 -9.73Q993.23 -11.10 995.45 -13.68Q997.67 -16.25 997.67 -19.87Q997.67 -21.82 997.00 -23.32Q996.33 -24.82 995.14 -25.93Q993.95 -27.03 992.28 -27.87Q990.62 -28.70 988.63 -29.30L970.17 -34.77Q967.47 -35.55 964.68 -36.83Q961.88 -38.12 959.55 -40.18Q957.22 -42.25 955.78 -45.33Q954.33 -48.42 954.33 -52.80Q954.33 -59.47 957.76 -64.09Q961.18 -68.72 967.02 -71.09Q972.85 -73.47 980.10 -73.43Q987.42 -73.37 993.18 -70.87Q998.95 -68.37 1002.78 -63.68Q1006.60 -58.98 1008.07 -52.37L996.87 -50.43Q996.10 -54.52 993.67 -57.44Q991.23 -60.37 987.67 -61.93Q984.10 -63.50 979.97 -63.57Q975.95 -63.63 972.64 -62.33Q969.34 -61.03 967.35 -58.70Q965.37 -56.37 965.37 -53.30Q965.37 -50.30 967.11 -48.46Q968.85 -46.62 971.43 -45.54Q974.02 -44.47 976.57 -43.77L989.87 -40.00Q992.37 -39.32 995.55 -38.14Q998.73 -36.97 1001.71 -34.85Q1004.69 -32.73 1006.63 -29.28Q1008.57 -25.82 1008.57 -20.53Q1008.57 -15.12 1006.37 -10.98Q1004.17 -6.85 1000.33 -4.08Q996.50 -1.32 991.52 0.09Q986.53 1.50 980.97 1.50ZM1059.17 0.00L1059.17 -62.13L1035.23 -62.13L1035.23 -72.00L1093.57 -72.00L1093.57 -62.13L1069.63 -62.13L1069.63 0.00ZM1123.57 0.00L1123.57 -72.00L1169.57 -72.00L1169.57 -62.13L1134.04 -62.13L1134.04 -41.97L1163.57 -41.97L1163.57 -32.10L1134.04 -32.10L1134.04 -9.87L1169.57 -9.87L1169.57 0.00ZM1203.57 0.00L1203.57 -72.00L1213.04 -72.00L1239.10 -17.83L1265.07 -72.00L1274.60 -72.00L1274.60 -0.03L1264.73 -0.03L1264.73 -49.30L1241.47 0.00L1236.70 0.00L1213.44 -49.30L1213.44 0.00ZM1336.70 1.50Q1328.94 1.50 1322.71 -1.18Q1316.49 -3.85 1312.46 -8.82Q1308.44 -13.78 1307.27 -20.63L1318.14 -22.30Q1319.79 -15.70 1325.04 -12.03Q1330.29 -8.37 1337.30 -8.37Q1341.64 -8.37 1345.30 -9.73Q1348.97 -11.10 1351.18 -13.68Q1353.40 -16.25 1353.40 -19.87Q1353.40 -21.82 1352.73 -23.32Q1352.07 -24.82 1350.88 -25.93Q1349.69 -27.03 1348.02 -27.87Q1346.35 -28.70 1344.37 -29.30L1325.90 -34.77Q1323.20 -35.55 1320.41 -36.83Q1317.62 -38.12 1315.28 -40.18Q1312.95 -42.25 1311.51 -45.33Q1310.07 -48.42 1310.07 -52.80Q1310.07 -59.47 1313.49 -64.09Q1316.92 -68.72 1322.75 -71.09Q1328.59 -73.47 1335.84 -73.43Q1343.15 -73.37 1348.92 -70.87Q1354.69 -68.37 1358.51 -63.68Q1362.34 -58.98 1363.80 -52.37L1352.60 -50.43Q1351.84 -54.52 1349.40 -57.44Q1346.97 -60.37 1343.40 -61.93Q1339.84 -63.50 1335.70 -63.57Q1331.69 -63.63 1328.38 -62.33Q1325.07 -61.03 1323.09 -58.70Q1321.10 -56.37 1321.10 -53.30Q1321.10 -50.30 1322.84 -48.46Q1324.59 -46.62 1327.17 -45.54Q1329.75 -44.47 1332.30 -43.77L1345.60 -40.00Q1348.10 -39.32 1351.28 -38.14Q1354.47 -36.97 1357.44 -34.85Q1360.42 -32.73 1362.36 -29.28Q1364.30 -25.82 1364.30 -20.53Q1364.30 -15.12 1362.10 -10.98Q1359.90 -6.85 1356.07 -4.08Q1352.24 -1.32 1347.25 0.09Q1342.27 1.50 1336.70 1.50Z"/></svg>
+  <p>AI Scan · Koality Deals · noviembre de 2026</p>
+</footer>
+</div>
+</body>
+</html>
